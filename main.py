@@ -46,11 +46,12 @@ def extract_html_after_removing_script(html_content: str) -> str:
 
 @app.post("/extract-content")
 def extract_content(url: str = Form(...)):
-    parsed_url = urlparse(url)
-    formatted_url = parsed_url.netloc + parsed_url.path
+    # parsed_url = urlparse(url)
+    # formatted_url = parsed_url.netloc + parsed_url.path
 
     base_url = "https://webcache.googleusercontent.com/search?q=cache:"
-    full_url = base_url + formatted_url + "&strip=0&vwsrc=0"
+    # full_url = base_url + formatted_url + "&strip=0&vwsrc=0"
+    full_url = base_url + url
 
     try:
         response = requests.get(full_url, headers=HEADERS)
